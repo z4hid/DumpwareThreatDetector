@@ -18,3 +18,7 @@ DATA_INGESTION_ARTIFACTS_DIR = 'DataIngestion'
 UNZIP_FOLDER_NAME = 'data/'
 
 
+# Data validation related config
+SCHEMA_FILE_PATH = os.path.join(from_root(), 'config', 'schema.yaml')
+
+
