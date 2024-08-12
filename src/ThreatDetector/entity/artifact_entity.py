@@ -9,4 +9,7 @@ class DataIngestionArtifact:
     data_path: str
     
     
-
+@dataclass
+class DataValidationArtifact:
+    validation_status: bool
+    
