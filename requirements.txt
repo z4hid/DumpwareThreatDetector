@@ -3,3 +3,4 @@ torchvision
 pyyaml
 from-root
 python-dotenv
+gdown
