@@ -9,15 +9,44 @@ from src.ThreatDetector.utils import read_yaml
 
 class DataValidation:
     def __init__(self, data_ingestion_artifact: DataIngestionArtifact):
+        """
+        __init__ function of DataValidation class.
+
+        This function is used to initialize the DataValidation class.
+
+        Args:
+            data_ingestion_artifact (DataIngestionArtifact): Artifact containing the paths to the train, test, and validation datasets.
+
+        Returns:
+            None
+        """
         self.data_ingestion_artifact = data_ingestion_artifact
         self._schema_config = read_yaml(SCHEMA_FILE_PATH)
     
     def count_classes(self, path):
+        """
+        Counts the number of classes in the given dataset.
+
+        Args:
+            path (str): Path to the dataset.
+
+        Returns:
+            bool: True if the number of classes matches the expected number, False otherwise.
+        """
         outcomes = os.listdir(path)
         status = len(outcomes) == len(self._schema_config['classes'])
         return status
     
     def initiate_data_validation(self):
+        """
+        Initiates the data validation component by counting the number of classes in the train and test datasets.
+
+        Args:
+            None
+
+        Returns:
+            DataValidationArtifact: Artifact containing the result of the data validation.
+        """
         try:
             logging.info("Initiating the data validation component...")
             validation_error_msg=''
