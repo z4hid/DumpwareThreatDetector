@@ -23,7 +23,7 @@ class DataIngestionConfig:
 
     # URL to the zip file containing the training and test data
     zip_data_path: str = (
-        'https://drive.google.com/file/d/1-xFGicUDjIjeh3EdMbESzOYMywAOyotW/view'
+        'https://drive.google.com/file/d/1r4md2pXWYgib4EFLFHT0rGFVQRiaaLuO/view?usp=sharing'
     )
 
     # Path to the directory containing the training data
@@ -36,10 +36,10 @@ class DataIngestionConfig:
         data_ingestion_artifact_dir, TEST_FOLDER_NAME
     )
 
-    # Path to the directory containing the validation data
-    valid_data_path: str = os.path.join(
-        data_ingestion_artifact_dir, VALIDATION_FOLDER_NAME
-    )
+    # # Path to the directory containing the validation data
+    # valid_data_path: str = os.path.join(
+    #     data_ingestion_artifact_dir, VALIDATION_FOLDER_NAME
+    # )
 
 
 @dataclass
@@ -50,4 +50,5 @@ class DataValidationConfig:
 
     # Path to the schema file
     schema_file_path: str = os.path.join(from_root(), SCHEMA_FILE_PATH)
+
 
