@@ -52,3 +52,26 @@ class DataValidationConfig:
     schema_file_path: str = os.path.join(from_root(), SCHEMA_FILE_PATH)
 
 
+@dataclass
+class ModelTrainingConfig:
+    model_trainer_artifact_dir = os.path.join(from_root(), ARTIFACTS_DIR, MODEL_TRAINING_ARTIFACTS_DIR)
+    model_path: str = os.path.join(model_trainer_artifact_dir, MODEL_NAME)
+    transformer_object_path: str = os.path.join(model_trainer_artifact_dir, TRANSFORM_OBJECT_NAME)
+    
+
+@dataclass
+class ModelEvaluationConfig:
+    hf_model_path: str = HF_MODEL_URI
+    model_evaluation_artifact_dir = os.path.join(from_root(), ARTIFACTS_DIR, MODEL_EVALUATION_ARTIFACTS_DIR)
+    # best_model_dir: str = os.path.join(model_evaluation_artifact_dir, HF_MODEL_DIR_NAME)
+    best_model: str = HF_MODEL_NAME
+    best_model_path: str = os.path.join(model_evaluation_artifact_dir, best_model)
+    
+    
+@dataclass
+class PredictionPipelineConfig:
+    hf_model_path: str = HF_MODEL_URI
+    prediction_artifact_dir = os.path.join(from_root(), ARTIFACTS_DIR, PREDICTION_PIPLEINE_DIR_NAME)
+    model_download_path = os.path.join(prediction_artifact_dir, MODEL_NAME)
+    transforms_path = os.path.join(prediction_artifact_dir, TRANSFORM_OBJECT_NAME)
+    
