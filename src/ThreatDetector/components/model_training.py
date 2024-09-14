@@ -19,6 +19,18 @@ class ModelTraining:
         self.model_training_config = model_training_config
         
     def get_data_loader(self, train_data):
+        """
+        Method to create PyTorch data loaders from the given dataset.
+
+        Args:
+            train_data (Dataset): The dataset to be split into training and validation sets.
+
+        Returns:
+            Tuple of two DataLoaders: The first DataLoader is for the training set and the second DataLoader is for the validation set.
+
+        Raises:
+            CustomException: If there is an error during the data loader creation process.
+        """
         try:
             val_size = int(len(train_data) * 0.2)
             train_size = len(train_data) - val_size
@@ -34,6 +46,18 @@ class ModelTraining:
             raise CustomException(e, sys)
         
     def get_model(self, train_data):
+        """
+        Method to get the custom PyTorch model.
+
+        Args:
+            train_data (Dataset): The dataset containing the number of classes.
+
+        Returns:
+            model: The custom PyTorch model.
+
+        Raises:
+            CustomException: If there is an error getting the custom model.
+        """
         try:
             logging.info("Get the custom model")
             num_classes = len(train_data.classes)
@@ -43,6 +67,20 @@ class ModelTraining:
             raise CustomException(e, sys)
 
     def load_to_GPU(self, training_dl, valid_dl, model):
+        """
+        Loads the model, training data loader and validation data loader to the GPU.
+
+        Args:
+            training_dl (DataLoader): The training data loader.
+            valid_dl (DataLoader): The validation data loader.
+            model (nn.Module): The custom PyTorch model.
+
+        Returns:
+            Tuple of three objects: The training data loader, validation data loader, and the custom PyTorch model, all loaded to the GPU.
+
+        Raises:
+            CustomException: If there is an error loading the data or model to the GPU.
+        """
         try:
             logging.info("Load the model to GPU")
             DEVICE = get_default_device()
@@ -57,6 +95,20 @@ class ModelTraining:
             raise CustomException(e, sys)
         
     def train_model(self, model, train_dl, valid_dl):
+        """
+        Method to train the model.
+
+        Args:
+            model (nn.Module): The custom PyTorch model.
+            train_dl (DataLoader): The training data loader.
+            valid_dl (DataLoader): The validation data loader.
+
+        Returns:
+            Tuple of two objects: The first object is the trained model, and the second object is the result of model training.
+
+        Raises:
+            CustomException: If there is an error during the model training process.
+        """
         try:
             logging.info("Start training the model")
             fitted_model, result = my_fit_method(
@@ -75,6 +127,20 @@ class ModelTraining:
             raise CustomException(e, sys)
          
     def initiate_model_training(self):
+        """
+        Initiates the model training component by performing the following operations:
+        1. Create a PyTorch data loader for the training dataset.
+        2. Create a PyTorch data loader for the validation dataset.
+        3. Load the custom PyTorch model.
+        4. Load the model to the GPU.
+        5. Train the model using the specified hyperparameters.
+        6. Save the trained model to the specified path.
+        7. Save the transformer object to the specified path.
+        8. Return a ModelTrainingArtifacts object containing the trained model path, result of model training, and transformer object path.
+
+        Raises:
+            CustomException: If there is an error during the model training process.
+        """
         try:
             logging.info("Initiating the model training component...")
             
