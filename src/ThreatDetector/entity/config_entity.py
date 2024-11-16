@@ -36,11 +36,6 @@ class DataIngestionConfig:
         data_ingestion_artifact_dir, TEST_FOLDER_NAME
     )
 
-    # # Path to the directory containing the validation data
-    # valid_data_path: str = os.path.join(
-    #     data_ingestion_artifact_dir, VALIDATION_FOLDER_NAME
-    # )
-
 
 @dataclass
 class DataValidationConfig:
